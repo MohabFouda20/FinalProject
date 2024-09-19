@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './tableform.component.css'
 })
 export class TableformComponent {
-  formData :any;
+  formData : any;
   getData(e :any){
     e.preventDefault()
     this.formData = new FormData(e.target)
