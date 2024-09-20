@@ -5,4 +5,5 @@
     box-sizing : border-box;
     font-family: "DM Sans", sans-serif;
     transform: 0.3s;
+    /* display: flex; */
 }
