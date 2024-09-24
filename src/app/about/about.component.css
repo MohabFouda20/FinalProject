@@ -1,14 +1,12 @@
-
-
-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: absolute;
-    top: 150px;
-    width: 100%;
-    overflow-x: hidden;
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  overflow-x: hidden;
 }
 .aboutFirst {
   display: flex;
@@ -16,7 +14,6 @@ section{
   align-items: center;
   padding: 50px;
   background-color: #f9f9f9;
-  /* margin-bottom: 100px; */
 }
 
 .content-container {
@@ -24,7 +21,6 @@ section{
   max-width: 80vw;
   gap: 100px;
   align-items: center;
-
 }
 
 .image-container {
@@ -54,24 +50,23 @@ section{
 }
 
 .text-container h1 {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 55px;
   font-weight: medium;
-  color: #2C2F24;
+  color: #2c2f24;
   margin-bottom: 50px;
 }
 
 .text-container h4 {
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   font-size: 16px;
   font-weight: medium;
-  color: #2C2F24;
+  color: #2c2f24;
   margin-bottom: 50px;
-
 }
 
 .text-container p {
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   font-size: 16px;
   font-weight: regular;
   /* inline-size: 24px; */
@@ -79,7 +74,7 @@ section{
   margin-bottom: 50px;
 }
 
-.secondSection{
+.secondSection {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,10 +83,10 @@ section{
   background-color: #f9f9f9;
   margin-top: 100px;
 }
-.imageBG{
+.imageBG {
   width: 100vw;
   height: 70vh;
-  background-image: url('D:/repoo/FinalProject/public/about/BG.png');
+  background-image: url("D:/repoo/FinalProject/public/about/BG.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -101,20 +96,20 @@ section{
   flex-direction: column;
   margin-bottom: 50px;
 }
-.imageBG img{
+.imageBG img {
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 20px;
 }
-.imageBG h1{
-  font-family: 'Playfair Display';
+.imageBG h1 {
+  font-family: "Playfair Display";
   font-size: 55px;
   font-weight: 500;
   color: white;
   margin-bottom: 50px;
   line-height: 65px;
 }
-.srvs{
+.srvs {
   width: 80vw;
   display: flex;
   justify-content: space-evenly;
@@ -123,112 +118,142 @@ section{
   gap: 50px;
   margin-bottom: 150px;
 }
-.card{
+.card {
   display: flex;
   align-items: flex-start;
   gap: 20px;
-
 }
-.text{
+.text {
   display: flex;
   align-self: flex-start;
   flex-direction: column;
 }
-.text>h3{
-  font-family: 'DM Sans';
+.text > h3 {
+  font-family: "DM Sans";
   font-size: 20px;
   font-weight: bold;
-  color: #2C2F24;
+  color: #2c2f24;
   margin-bottom: 20px;
 }
-.text>p{
-  font-family: 'DM Sans';
+.text > p {
+  font-family: "DM Sans";
   font-size: 16px;
   font-weight: regular;
   color: #414536;
 }
-.thirdSection{
+.thirdSection {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 50px;
   background-color: #f9f9f9;
+  flex-wrap: wrap;
+
 }
-.content{
+.content {
   width: 80vw;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-wrap: wrap;
 }
-.text{
+.text {
   max-width: 50%;
-  flex:1;
+  flex: 1;
   justify-self: flex-start;
-  
 }
-.title>h1{
-  font-family: 'Playfair Display';
+.title > h1 {
+  font-family: "Playfair Display";
   font-size: 55px;
   font-weight: medium;
-  color: #2C2F24;
+  color: #2c2f24;
   margin-bottom: 50px;
 }
-.title>p{
-  font-family: 'DM Sans';
+.title > p {
+  font-family: "DM Sans";
   font-size: 16px;
   font-weight: 200;
   color: #414536;
   margin-bottom: 100px;
 }
 
-.facts{
+.facts {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 50px;
 }
-.fact{
+.fact {
   width: 300px;
   height: 150px;
   border-radius: 10px;
-  border:#DBDFD0 0.5px solid;
+  border: #dbdfd0 0.5px solid;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.fact>h1{
-  font-family: 'playfair Display';
-  font-size:55px;
+.fact > h1 {
+  font-family: "playfair Display";
+  font-size: 55px;
   font-weight: medium;
   line-height: 61px;
-  color: #2C2F24;
+  color: #2c2f24;
 }
-.fact>p{
-  font-family: 'DM Sans';
-  font-size:18;
+.fact > p {
+  font-family: "DM Sans";
+  font-size: 18;
   font-weight: medium;
   line-height: 28px;
-  color: #2C2F24;
+  color: #2c2f24;
 }
 
-
-
-
-
-.imageMask{
+.imageMask {
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+
 }
-.imageMask img{
-   border-radius: 10px;
+.imageMask img {
+  border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 800px) {
+  .content-container, .srvs {
+    flex-direction: column; /* Stack elements on top of each other */
+  }
+
+  .imageBG h1 {
+    font-size: 35px; /* Reduce for tablet-sized devices */
+  }
+  .content{
+    flex-direction: column;
+}
+}
+
+
+@media screen and (max-width: 500px) {
+  .text-container h1, .title > h1 {
+    font-size: 35px; /* Further reduce for mobile */
+  }
+
+  .text-container p, .title > p {
+    font-size: 14px; /* Further reduced for readability on mobile */
+  }
+
+  .fact > h1 {
+    font-size: 35px; /* Further reduction for small devices */
+  }
+
+  .imageBG h1 {
+    font-size: 30px; /* Further reduced for smaller screens */
+  }
+  
+  
 }
