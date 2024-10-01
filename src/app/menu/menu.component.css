@@ -1,0 +1,158 @@
+*{
+  overflow-x: hidden;
+
+}
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  position: absolute;
+  top: 70px;
+}
+.heading {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40vw;
+}
+.heading h1 {
+  font-family: "Playfair Display";
+  font-size: 100px;
+  color: #2C2F24;
+  font-weight: regular;
+}
+.heading p {
+  font-family: "DM Sans";
+  font-size: 18px;
+  color: #495460;
+  font-weight: regular;
+  margin-top: 20px;
+  text-align: center;
+}
+.category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 50px;
+}
+.category ul{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    list-style-type: none;
+}
+.category ul li{
+    margin-right: 20px;
+    font-family: "DM Sans";
+    font-size: 16px;
+    color: #495460;
+    font-weight: bold;
+    width: 120px;
+    height: 48px;
+    text-align: center;
+    line-height: 46px;
+    padding: auto;
+    border-radius: 250px;
+    border: 1px solid #495460;
+    cursor: pointer;
+}
+.category ul li a{
+    text-decoration: none;
+    color: #495460;
+    width: 120px;
+    height: 48px;
+    line-height: 46px;
+    padding: auto;
+
+
+}
+
+
+.category ul li:hover{
+    color: white;
+    background-color: #AD343E;
+    border: 0;
+    transition: 0.3s;
+}
+
+
+
+
+.menuItems {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.menuItem {
+    width: 300px; 
+    height: 400px; 
+    background-color: #fff; 
+    border-radius: 8px;     
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center; 
+  
+}
+
+.menuItem:hover {
+    transform: translateY(-10px);
+}
+
+.menuItem img {
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.itemDescription {
+    padding: 15px; }
+
+.itemDescription h3 {
+    color: #b22222; 
+    font-size: 1.5rem; 
+    margin: 10px 0;
+}
+
+.itemDescription h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.itemDescription p {
+    font-size: 0.9rem; 
+    color: #666; 
+    margin-bottom: 30px;
+}
+
+
+
+.theBottomImage{
+    width: 100vw;
+    height: 100%;
+    margin-top: 50px;
+}
+.theBottomImage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .menuItem {
+        margin-bottom: 20px;
+    }
+    .heading{
+        width: 80vw;
+    }
+}

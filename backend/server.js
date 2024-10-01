@@ -1,15 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const menuRoutes = require("./routes/menuRoutes");
 const dotenv = require("dotenv");
 const userMiddleware = require("./middleware/userMiddleware");
+const adminMiddleware = require("./middleware/adminMiddleware");
 const app = express();
 dotenv.config();
 const port = process.env.port;
+const cors = require("cors");
+
+app.use(cors({ origin: "http://localhost:4200", 
+  methods: "*",
+}));
 
 app.use(express.json());
 app.listen(port, () => {
@@ -23,8 +28,6 @@ db.on("error", (err) => {
 db.once("open", () => {
   console.log("database connection established");
 });
-
-app.use('/user',userRoutes)
-app.use(userMiddleware)
-app.use('/admin',adminRoutes)
-app.use('/menu',menuRoutes)
+app.use("/user", userRoutes);
+app.use("/admin", adminRoutes);
+app.use("/menu", menuRoutes);

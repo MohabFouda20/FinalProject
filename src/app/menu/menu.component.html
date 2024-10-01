@@ -1,1 +1,30 @@
-<p>menu works!</p>
+<section>
+    <div class="heading">
+        <h1>Our Menu</h1>
+        <p>We consider all the drivers of change gives you the components you need to change to create a truly happens.</p>
+    </div>
+    <div class="category">
+        <ul>
+            <li><a routerLink="/menu" routerLinkActive="active">All</a></li>
+            <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Breakfast</a></li>
+            <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Main Dishes</a></li>
+            <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Drinks</a></li>
+            <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Desserts</a></li>
+        </ul>
+    </div>
+    <div class="menuItems">
+        @for (item of items; track $index) {
+            <div class="menuItem">
+                <img src="{{item.image}}" alt="menu item">
+                <div class="itemDescription">
+                    <h3>{{item.price}} $</h3>
+                    <h2>{{item.name}}</h2>
+                    <p>{{item.description}}</p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="theBottomImage">
+        <img src="menu/brand.png" alt="">
+    </div>
+</section>

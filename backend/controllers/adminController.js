@@ -34,7 +34,7 @@ const adminLogin = async (req, res) => {
     if (!isPasswordMatched) {
       throw "Invalid Password";
     }
-    let token = await jwt.sign({ email: admin.email }, process.env.jwtKey);
+    let token = await jwt.sign({ name : admin.name ,email: admin.email }, process.env.jwtKey);
     res
       .status(200)
       .cookie("jwt", token)
