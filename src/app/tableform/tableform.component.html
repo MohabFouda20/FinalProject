@@ -1,6 +1,40 @@
-<form (submit)="getData($event)"  >
-    <input type="text" name="Name" >
-    <input type="date" name="date" >
-    <input type="time" name="time" >
-    <input type="submit" >
-</form>
+<section>
+  <div class="heading">
+    <h1>Book A Table</h1>
+    <p>
+      We consider all the drivers of change gives you the components you need to
+      change to create a truly happens.
+    </p>
+  </div>
+  <div class="tableform">
+    <form (submit)="getData($event)">
+      <div class="row1">
+        <div class="oneI">
+          <p>Date</p>
+          <input type="date" name="Date"/>
+        </div>
+        <div class="oneI">
+          <p>Time</p>
+          <input type="time" name="Time" />
+        </div>
+      </div>
+      <div class="row2">
+        <div class="oneI">
+          <p>Name</p>
+          <input type="text" placeholder="Enter Your Name" name="Name" />
+        </div>
+        <div class="oneI">
+          <p>Phone</p>
+          <input type="text" placeholder="x-xxx-xxx-xxxx" name="Phone"/>
+        </div>
+      </div>
+      <div class="row3">
+        <div class="oneI">
+          <p>Total Person</p>
+          <input type="number"  name="TotalPerson"/>
+        </div>
+      </div>
+      <input type="submit" name="" id="">
+    </form>
+  </div>
+</section>

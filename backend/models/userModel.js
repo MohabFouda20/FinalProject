@@ -4,6 +4,12 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String,
     phone: String,
+    bookedTable:{
+        isBooking : {type : Boolean , default : false},
+        tableNumber : Number,
+        date : String,
+        time : String
+    }
 })
 
 const userModel = mongoose.model("User",userSchema)

@@ -4,6 +4,8 @@ import { TableformComponent } from './tableform/tableform.component';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
   {
@@ -17,30 +19,7 @@ export const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent,
-    children: [
-      {
-        path: 'all',
-        component: MenuComponent,
-      },
-      {
-        path: 'breakfast',
-        component: MenuComponent,
-      },
-      {
-        path: 'dessert',
-        component: MenuComponent,
-      },
-      {
-        path: 'MainDishes',
-        component: MenuComponent,
-      },
-      {
-        path: 'drinks',
-        component: MenuComponent,
-      },
-    ],
   },
-
   {
     path: 'contact',
     component: ContactComponent,
@@ -48,6 +27,14 @@ export const routes: Routes = [
   {
     path: 'tableform',
     component: TableformComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: '**',

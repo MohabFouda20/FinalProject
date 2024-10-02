@@ -42,21 +42,32 @@ a{
     /* background-color: #f2f2f2; */
 }
 
-li>a:hover{
+li a:hover{
     background-color: #DBDFD0;
     transition: 0.5s;
 }
-
-button{
+.active{
+    background-color: #DBDFD0;
+}
+.bookTable{
+    display: inline;
+    
+}
+.bookTable a{
     width: 200px;
     padding: 15px;
     border-radius: 150px;
-    background-color: #f2f2f2;
-    border: solid 2px #000000;
+    border: solid 1px #000000;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
+    margin: 20px;
 }
-.active{
-    background-color: #DBDFD0;
+
+
+
+.bookTable a.active{
+    background-color: #b33939;
+    color: white;
+    transition: 0.5s;
 }
