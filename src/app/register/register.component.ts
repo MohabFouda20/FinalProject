@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,17 +10,9 @@ import { Component } from '@angular/core';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  constructor( private http:HttpClient ) { }
+  constructor( private http:HttpClient ,private router:Router) { }
   formData:any;
-  // getData(e:any){
-  //   e.preventDefault()
-  //   this.formData = new FormData(e.target)
-  //   console.log(this.formData.get('Name'))
-  //   console.log(this.formData.get('Email'))
-  //   console.log(this.formData.get('phone'))
-  
 
-  // }
 
   sendData(e:any){
     try {
@@ -42,6 +35,7 @@ export class RegisterComponent {
     } catch (error) {
       console.error('Error in form submission:', error);
     }
+    this.router.navigate(['/login']);
   }
 
 }

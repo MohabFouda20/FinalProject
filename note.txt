@@ -1,0 +1,3 @@
+the admin is need to have the crud opperations 
+make the sign in and the register functions
+make sure every thing ok and send the vedio

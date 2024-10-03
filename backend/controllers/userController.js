@@ -24,10 +24,10 @@ const userRegister = async (req, res) => {
 const userlogin = async (req, res) => {
     try{
         let credential = req.body;
-        let user = await User.findOne({userName:credential.userName})
+        let user = await User.findOne({email:credential.email})
         if(!user)
         {
-            throw("Invalid Username");
+            throw("Invalid email");
         }
         let isPasswordMatched = await bcrypt.compare(credential.password, user.password);
         if(!isPasswordMatched)

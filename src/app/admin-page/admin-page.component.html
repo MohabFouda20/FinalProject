@@ -1,1 +1,109 @@
-<p>admin-page works!</p>
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="profile">
+      <img
+        src="admin-icon-vector.jpg"
+        alt="Profile Picture"
+        class="profile-pic"
+      />
+      <p>Hello, Admin</p>
+    </div>
+    <ul class="menu">
+      <li><a routerLink="/admin" routerLinkActive="active">Dashboard</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <div class="cards">
+      <div class="card">
+        <p>Total Users</p>
+        <h3>
+          <a routerLink="/admin" (click)="chageDisplayUsers()">{{
+            totalUsers
+          }}</a>
+        </h3>
+      </div>
+      <div class="card">
+        <p>Total Menu Items</p>
+        <h3>
+          <a routerLink="/admin" (click)="chageDisplayMenuItems()">{{
+            totalProducts
+          }}</a>
+        </h3>
+      </div>
+    </div>
+    @if (displayMenuItems) {
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of menuItems; track $index) {
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.category }}</td>
+            <td>
+              <button (click)="editItem(item)" class="edit">Edit</button>
+              <button (click)="deleteItem(item)" class="delete">Delete</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      <div (click)="addItem()" class="addButton">
+      <button>add Item +</button>
+    </div>
+    </div>
+    } @if (displayUsers) {
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>username</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users; track $index) {
+          <tr>
+            <td>{{ user.userName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>
+              <button (click)="editItem(user)" class="edit">Edit</button>
+              <button (click)="deleteItem(user)" class="delete">Delete</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    }
+
+    @if (isFormVisible) {
+    <div class="form-container">
+      <form (submit)="onSubmit($event)">
+        <label for="name">Product Name:</label>
+        <input id="name"name="name" required>
+    
+        <label for="price">Price:</label>
+        <input id="price"name="price" required>
+    
+        <label for="category">Category:</label>
+        <input id="category" name="category" required>
+    
+        <button type="submit">{{ formAction }}</button>
+      </form>
+    </div>
+  }
+  </main>
+</div>
