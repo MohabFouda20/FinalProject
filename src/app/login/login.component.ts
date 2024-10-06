@@ -25,6 +25,10 @@ export class LoginComponent {
     this.http.post('http://localhost:3050/user/login', this.loginData).subscribe({
       next: (data: any) => {
         console.log('Login successful:', data);
+        const token = data.token;
+        localStorage.setItem('jwt', token);
+        
+        alert('Login successful!');
         // Handle successful login (e.g., store token, navigate to dashboard)
         this.router.navigate(['/home']);
       },

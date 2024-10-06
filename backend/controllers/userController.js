@@ -35,7 +35,7 @@ const userlogin = async (req, res) => {
             throw("Invalid Password");
         }
         let token = await jwt.sign({userName:user.userName}, process.env.jwtKey);
-        res.cookie('jwt', token).json({message: "User logged in successfully"});
+        res.cookie('jwt', token).json({message: "User logged in successfully" , token : token});
 
     }catch(err){
     res.status(500).json(err)

@@ -11,7 +11,10 @@
         </ul>
     </div>
     <div class="bookTable">
+        @if (!isLogged) {
         <a routerLink="/login" routerLinkActive = "active">Login</a>
+        }@else if (isLogged) { 
         <a routerLink="/tableform" routerLinkActive = "active">Book A Table</a>
+    }
     </div>
 </div>

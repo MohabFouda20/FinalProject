@@ -31,5 +31,6 @@ db.once("open", () => {
   console.log("database connection established");
 });
 app.use("/user", userRoutes);
+// app.use(userMiddleware)
 app.use("/admin", adminRoutes);
 app.use("/menu", menuRoutes);

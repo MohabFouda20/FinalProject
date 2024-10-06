@@ -69,11 +69,12 @@ export class AdminPageComponent implements OnInit {
     this.http.post('http://localhost:3050/admin/menu', this.formData).subscribe({
       next: (response: any) => {
         console.log('Item created:', response);
-        this.getMenuItems();
         this.isCreateFormVisible = false;
       },
       error: (error) => console.error('Error creating item:', error)
     });
+    this.http.get('http://localhost:3050/menu').subscribe({});
+
   }
 
   onEditSubmit() {

@@ -1,7 +1,13 @@
-@if (showNavbar) {
-<app-nav></app-nav>
-}
-<router-outlet />
-@if (showNavbar) {
-<!-- <app-footer></app-footer> -->
-}
+<div class="page-container">
+    @if (showNavbar) {
+      <app-nav></app-nav>
+    }
+    <div class="content-wrap">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="footerContainer">
+    @if (showNavbar) {
+      <app-footer></app-footer>
+    }
+</div>
