@@ -7,7 +7,6 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { AddMenuComponent } from './add-menu/add-menu.component';
 
 export const routes: Routes = [
   {

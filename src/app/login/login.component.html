@@ -1,18 +1,18 @@
 <section>
     <div class="container">
-        <form (submit)="sendData($event)">
-            <div class="row1">
-                <div class="oneI">
-                    <p>Email</p>
-                    <input type="email" placeholder="Enter Your Email" name="Email" />
-                </div>
-                <div class="oneI">
-                    <p>Password</p>
-                    <input type="password" placeholder="Enter Your password" name="password" />
-                </div>
-            </div>
-            <input type="submit" value="Login">
-        </form>
-        <p>not Registered yet  <a routerLink="/register">Register Now</a> </p>
+      <form (ngSubmit)="login()">
+        <div class="row1">
+          <div class="oneI">
+            <p>Email</p>
+            <input type="email" placeholder="Enter Your Email" name="email" [(ngModel)]="loginData.email" required>
+          </div>
+          <div class="oneI">
+            <p>Password</p>
+            <input type="password" placeholder="Enter Your password" name="password" [(ngModel)]="loginData.password" required>
+          </div>
+        </div>
+        <input type="submit" value="Login">
+      </form>
+      <p>Not registered yet? <a routerLink="/register">Register Now</a></p>
     </div>
-</section>
+  </section>

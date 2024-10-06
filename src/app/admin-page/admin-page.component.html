@@ -1,11 +1,7 @@
 <div class="dashboard">
   <aside class="sidebar">
     <div class="profile">
-      <img
-        src="admin-icon-vector.jpg"
-        alt="Profile Picture"
-        class="profile-pic"
-      />
+      <img src="admin-icon-vector.jpg" alt="Profile Picture" class="profile-pic" />
       <p>Hello, Admin</p>
     </div>
     <ul class="menu">
@@ -18,92 +14,131 @@
       <div class="card">
         <p>Total Users</p>
         <h3>
-          <a routerLink="/admin" (click)="chageDisplayUsers()">{{
-            totalUsers
-          }}</a>
+          <a routerLink="/admin" (click)="changeDisplayUsers()">{{ totalUsers }}</a>
         </h3>
       </div>
       <div class="card">
         <p>Total Menu Items</p>
         <h3>
-          <a routerLink="/admin" (click)="chageDisplayMenuItems()">{{
-            totalProducts
-          }}</a>
+          <a routerLink="/admin" (click)="changeDisplayMenuItems()">{{ totalProducts }}</a>
         </h3>
       </div>
     </div>
+
     @if (displayMenuItems) {
-    <div class="table">
-      <table>
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of menuItems; track $index) {
-          <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.price }}</td>
-            <td>{{ item.category }}</td>
-            <td>
-              <button (click)="editItem(item)" class="edit">Edit</button>
-              <button (click)="deleteItem(item)" class="delete">Delete</button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-      <div (click)="addItem()" class="addButton">
-      <button>add Item +</button>
-    </div>
-    </div>
-    } @if (displayUsers) {
-    <div class="table">
-      <table>
-        <thead>
-          <tr>
-            <th>username</th>
-            <th>email</th>
-            <th>phone</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (user of users; track $index) {
-          <tr>
-            <td>{{ user.userName }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phone }}</td>
-            <td>
-              <button (click)="editItem(user)" class="edit">Edit</button>
-              <button (click)="deleteItem(user)" class="delete">Delete</button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of menuItems; track $index) {
+              <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.category }}</td>
+                <td>
+                  <button (click)="showEditForm(item)" class="edit">Edit</button>
+                  <button (click)="showDeleteForm(item)" class="delete">Delete</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <div (click)="showCreateForm()" class="addButton">
+          <button>Add Item +</button>
+        </div>
+      </div>
     }
 
-    @if (isFormVisible) {
-    <div class="form-container">
-      <form (submit)="onSubmit($event)">
-        <label for="name">Product Name:</label>
-        <input id="name"name="name" required>
+    @if (displayUsers) {
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of users; track $index) {
+              <tr>
+                <td>{{ user.userName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+
+    @if (isCreateFormVisible) {
+      <div class="form-container">
+        <h2>Create New Menu Item</h2>
+        <form (ngSubmit)="onCreateSubmit()">
+          <label for="name">Product Name:</label>
+          <input id="name" name="name" [(ngModel)]="formData.name" required>
     
-        <label for="price">Price:</label>
-        <input id="price"name="price" required>
+          <label for="image">Image URL:</label>
+          <input id="image" name="image" [(ngModel)]="formData.image" required>
     
-        <label for="category">Category:</label>
-        <input id="category" name="category" required>
+          <label for="price">Price:</label>
+          <input id="price" name="price" type="number" [(ngModel)]="formData.price" required>
     
-        <button type="submit">{{ formAction }}</button>
-      </form>
-    </div>
-  }
+          <label for="category">Category:</label>
+          <input id="category" name="category" [(ngModel)]="formData.category" required>
+    
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" [(ngModel)]="formData.description" required></textarea>
+    
+          <button type="submit">Create Item</button>
+        </form>
+      </div>
+    }
+
+    @if (isEditFormVisible) {
+      <div class="form-container">
+        <h2>Edit Menu Item</h2>
+        <form (ngSubmit)="onEditSubmit()">
+          <label for="editName">Product Name:</label>
+          <input id="editName" name="name" [(ngModel)]="formData.name" required>
+    
+          <label for="editImage">Image URL:</label>
+          <input id="editImage" name="image" [(ngModel)]="formData.image" required>
+    
+          <label for="editPrice">Price:</label>
+          <input id="editPrice" name="price" type="number" [(ngModel)]="formData.price" required>
+    
+          <label for="editCategory">Category:</label>
+          <input id="editCategory" name="category" [(ngModel)]="formData.category" required>
+    
+          <label for="editDescription">Description:</label>
+          <textarea id="editDescription" name="description" [(ngModel)]="formData.description" required></textarea>
+    
+          <button type="submit">Update Item</button>
+        </form>
+      </div>
+    }
+
+    @if (isDeleteFormVisible) {
+      <div class="form-container">
+        <h2>Delete Menu Item</h2>
+        <p>Are you sure you want to delete "{{ deletingItem?.name }}"?</p>
+        <button (click)="onDeleteSubmit()">Confirm Delete</button>
+        <button (click)="isDeleteFormVisible = false">Cancel</button>
+      </div>
+    }
   </main>
 </div>

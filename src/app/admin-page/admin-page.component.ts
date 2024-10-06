@@ -1,107 +1,137 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-page',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, FormsModule, CommonModule],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css',
 })
 export class AdminPageComponent implements OnInit {
   displayUsers: boolean = false;
   displayMenuItems: boolean = false;
-  isFormVisible: boolean = false;
-  formAction: string = '';
-  formData: any;
-  editingItemIndex: number | null = null;
+  isCreateFormVisible: boolean = false;
+  isEditFormVisible: boolean = false;
+  isDeleteFormVisible: boolean = false;
+  
+  formData: any = {
+    name: '',
+    image: '',
+    price: 0,
+    category: '',
+    description: ''
+  };
+  
+  editingItem: any = null;
+  deletingItem: any = null;
 
-  users: any;
-  menuItems: any;
+  users: any[] = [];
+  menuItems: any[] = [];
   totalUsers: number = 0;
   totalProducts: number = 0;
 
   constructor(private http: HttpClient) {}
 
-  addItem() {
-    this.isFormVisible = true;
-    this.formAction = 'Add';
-    this.formData = { name: '', price: '', category: '' }; // Reset form data
-    }
-  
+  showCreateForm() {
+    this.isCreateFormVisible = true;
+    this.isEditFormVisible = false;
+    this.isDeleteFormVisible = false;
+    this.formData = {
+      name: '',
+      image: '',
+      price: 0,
+      category: '',
+      description: ''
+    };
+  }
 
-  // Edit Item - Open Form with Pre-filled Data
-  editItem(item: any) {
-    this.isFormVisible = true;
-    this.formAction = 'Edit';
+  showEditForm(item: any) {
+    this.isCreateFormVisible = false;
+    this.isEditFormVisible = true;
+    this.isDeleteFormVisible = false;
+    this.editingItem = item;
     this.formData = { ...item };
-    this.editingItemIndex = this.menuItems.indexOf(item);
   }
 
-  onSubmit(e: any) {
-    if (this.formAction === 'Add') {
-      // Add the new item to the list
+  showDeleteForm(item: any) {
+    this.isCreateFormVisible = false;
+    this.isEditFormVisible = false;
+    this.isDeleteFormVisible = true;
+    this.deletingItem = item;
+  }
 
-      try{
-        this.http.post('http://localhost:3050/menu', this.formData).subscribe((data: any) => {
-          console.log(data);
-        })
-      }catch (error) {
-        console.error(error);
-      }
-      this.menuItems.push({ ...this.formData });
-    } else if (this.formAction === 'Edit' && this.editingItemIndex !== null) {
-      // Update the item in the list
-      this.menuItems[this.editingItemIndex] = { ...this.formData };
+  onCreateSubmit() {
+    console.log(this.formData)
+    this.http.post('http://localhost:3050/admin/menu', this.formData).subscribe({
+      next: (response: any) => {
+        console.log('Item created:', response);
+        this.getMenuItems();
+        this.isCreateFormVisible = false;
+      },
+      error: (error) => console.error('Error creating item:', error)
+    });
+  }
+
+  onEditSubmit() {
+    if (this.editingItem && this.editingItem._id) {
+      this.http.patch(`http://localhost:3050/admin/menu/${this.editingItem._id}`, this.formData).subscribe({
+        next: (response: any) => {
+          console.log('Item updated:', response);
+          this.getMenuItems();
+          this.isEditFormVisible = false;
+        },
+        error: (error) => console.error('Error updating item:', error)
+      });
     }
-
-    // Hide the form after submission
-    this.isFormVisible = false;
-    this.formData = { name: '', price: '', category: '' }; // Reset form data
   }
 
-  // Delete Item
-  deleteItem(item: any) {
-    const index = this.menuItems.indexOf(item);
-    if (index > -1) {
-      this.menuItems.splice(index, 1);
+  onDeleteSubmit() {
+    if (this.deletingItem && this.deletingItem._id) {
+      this.http.delete(`http://localhost:3050/admin/menu/${this.deletingItem._id}`).subscribe({
+        next: (response: any) => {
+          console.log('Item deleted:', response);
+          this.getMenuItems();
+          this.isDeleteFormVisible = false;
+        },
+        error: (error) => console.error('Error deleting item:', error)
+      });
     }
   }
+
   getUsers() {
-    try {
-      this.http.get('http://localhost:3050/user').subscribe((data: any) => {
+    this.http.get('http://localhost:3050/user').subscribe({
+      next: (data: any) => {
         this.users = data;
         this.totalUsers = data.length;
-      });
-    } catch (error) {
-      console.error(error);
-    }
+      },
+      error: (error) => console.error('Error fetching users:', error)
+    });
   }
+
   getMenuItems() {
-    try {
-      this.http.get('http://localhost:3050/menu').subscribe((data: any) => {
-        this.totalProducts = data.length;
+    this.http.get('http://localhost:3050/menu').subscribe({
+      next: (data: any) => {
         this.menuItems = data;
-      });
-    } catch (error) {
-      console.error(error);
-    }
+        this.totalProducts = data.length;
+      },
+      error: (error) => console.error('Error fetching menu items:', error)
+    });
   }
-  chageDisplayUsers() {
-    if (this.displayMenuItems) {
-      this.displayMenuItems = !this.displayMenuItems;
-    }
+
+  changeDisplayUsers() {
+    this.displayMenuItems = false;
     this.displayUsers = !this.displayUsers;
-    console.log(this.displayUsers);
   }
-  chageDisplayMenuItems() {
-    if (this.displayUsers) {
-      this.displayUsers = !this.displayUsers;
-    }
+
+  changeDisplayMenuItems() {
+    this.displayUsers = false;
     this.displayMenuItems = !this.displayMenuItems;
-    console.log(this.displayMenuItems);
   }
+
   ngOnInit(): void {
     this.getUsers();
     this.getMenuItems();
