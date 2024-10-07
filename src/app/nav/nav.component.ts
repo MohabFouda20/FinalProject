@@ -22,6 +22,10 @@ export class NavComponent implements OnInit {
     const token = localStorage.getItem('jwt');
     this.isLogged = !!token;
   }
+  logout(){
+    localStorage.removeItem('jwt');
+    this.isLogged = false;
+  }
   ngOnInit() {
     this.checkLoginStatus();
   }
